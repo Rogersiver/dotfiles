@@ -1,3 +1,5 @@
 # My Dotfiles
 
-as managed by chezmoi
+Repo managed by chezmoi.
+
+Nvim is NvChad
