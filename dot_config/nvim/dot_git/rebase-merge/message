@@ -1,4 +1,0 @@
-fix auto inserting comments options not working | bp -> bw
-
-opt.formatoptions gets overriden by filetype stuff so we created an autocmd for it and bw deletes buffer from nvim memory too so i prefer it over bd! THX to @ii14 for guiding me properly
-
