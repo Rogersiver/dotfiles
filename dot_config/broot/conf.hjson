@@ -80,7 +80,6 @@ show_selection_mark: true
 # troubleshooting)
 #
 # icon_theme: vscode
-
 ###############################################################
 # Special paths
 # If some paths must be handled specially, uncomment (and change

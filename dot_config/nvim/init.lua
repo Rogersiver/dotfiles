@@ -1,34 +1,21 @@
-require('plugins')
-require('cmp-config')
-require('lsp-config')
-require('tree')
-require('mappings')
-require('null-ls-config')
-require('scrollbar-config')
+require "core"
 
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.opt.cursorline = true
+local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
-vim.cmd [[
+if custom_init_path then
+  dofile(custom_init_path)
+end
 
-colorscheme kanagawa
-set colorcolumn=80
-set clipboard+=unnamedplus
-set undofile
-set shiftwidth=2
-set autoindent
-set smartindent
-set wildmenu
-set tabstop=2
-set ruler
-set hlsearch
-set incsearch
+require("core.utils").load_mappings()
 
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-]]
+-- bootstrap lazy.nvim!
+if not vim.loop.fs_stat(lazypath) then
+  require("core.bootstrap").gen_chadrc_template()
+  require("core.bootstrap").lazy(lazypath)
+end
 
-
-
+dofile(vim.g.base46_cache .. "defaults")
+vim.opt.rtp:prepend(lazypath)
+require "plugins"
