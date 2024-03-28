@@ -5,29 +5,36 @@ local plugins = {
 
   -- Override plugin definition options
 
+
+
+
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
+    "williamboman/mason.nvim",
+    opts = overrides.mason
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+  },
+        {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
           require "custom.configs.null-ls"
         end,
       },
+  {
+    "neovim/nvim-lspconfig",
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "jose-elias-alvarez/null-ls.nvim",
     },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
-  },
-
-  -- override plugin configs
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason
-  },
-
+      require("custom.configs.null-ls") -- require your null-ls config here (example below)
+    end,
+},
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
@@ -87,8 +94,34 @@ local plugins = {
   init = function()
     require("zen-mode")
   end
-  }
-
+  },
+  {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+  {"ntpeters/vim-better-whitespace"},
+{
+    'cameron-wags/rainbow_csv.nvim',
+    config = true,
+    ft = {
+        'csv',
+        'tsv',
+        'csv_semicolon',
+        'csv_whitespace',
+        'csv_pipe',
+        'rfc_csv',
+        'rfc_semicolon'
+    },
+    cmd = {
+        'RainbowDelim',
+        'RainbowDelimSimple',
+        'RainbowDelimQuoted',
+        'RainbowMultiDelim'
+    }
+},
+  {
+    'nvimdev/lspsaga.nvim',
+    init = function()
+        require('lspsaga').setup({})
+    end,
+}
 
 
   -- To make a plugin not be loaded

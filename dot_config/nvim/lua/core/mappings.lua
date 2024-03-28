@@ -122,23 +122,17 @@ M.lspconfig = {
 
   n = {
     ["gD"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
+      "<cmd>Lspsaga goto_definition<CR>",
       "lsp declaration",
     },
 
     ["gd"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
+      "<cmd>Lspsaga peek_definition<CR>",
       "lsp definition",
     },
 
     ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
+      "<cmd>Lspsaga hover_doc<CR>",
       "lsp hover",
     },
 
@@ -171,9 +165,7 @@ M.lspconfig = {
     },
 
     ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
+      ":Lspsaga code_action",
       "lsp code_action",
     },
 

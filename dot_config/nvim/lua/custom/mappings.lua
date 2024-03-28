@@ -4,12 +4,10 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
-    ["tz"] = {":lua require('zen-mode').toggle({window = {width = .85}})<CR>", opts = { nowait = true }}
+    ["tz"] = {":lua require('zen-mode').toggle({window = {width = .85}})<CR>", "truezen", opts = { nowait = true }}
   },
 }
 
--- more keybinds!
--- place this in one of your configuration file(s)
 local hop = require('hop')
 local directions = require('hop.hint').HintDirection
 vim.keymap.set('', 'f', function()
