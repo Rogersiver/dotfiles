@@ -1,5 +1,19 @@
+# personal
+alias desk="mux desk"
+alias xcd='cd "$(xplr --print-pwd-as-result)"'
+alias dmurder='docker stop $(docker ps -aq) && docker rm -f $(docker ps -aq) && docker system prune -a'
+alias cpwd='pwd | pbcopy'
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 ############################ STANDARD ###############################
-alias c="clear"
 alias h='history -10'
 alias hc='history -c'
 alias hg='history | grep'
@@ -7,8 +21,26 @@ alias ybs='yarn build && yarn start'
 
 ############################ TMUX ###############################
 alias tm="tmux"
+
+function tmux_kill() {
+  if read -q '?exiting tmux? (y/n) ?'; then
+  tmux kill-server
+fi
+}
+
 alias km=tmux_kill
 alias mux='tmuxinator'
+
+function tree-git-ignore {
+    local ignored=$(git ls-files -ci --others --directory --exclude-standard)
+    local ignored_filter=$(echo "$ignored" \
+                    | egrep -v "^#.*$|^[[:space:]]*$" \
+                    | sed 's~^/~~' \
+                    | sed 's~/$~~' \
+                    | tr "\\n" "|")
+    tree --prune -I ".git|${ignored_filter: : -1}" "$@"
+}
+alias gtree=tree-git-ignore
 
 ############################ GIT ###############################
 alias gs='git status '
@@ -109,14 +141,21 @@ function d-aws-cli-fn {
            amazon/aws-cli:latest $1 $2 $3
 }
 
+# run AWS-CLI dockerized
 alias daws=d-aws-cli-fn
+
+# Docker compose
 alias dc=dc-fn
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
+# Docker Compose Run
 alias dcr=dcr-fn
+# Docker exec -it
 alias dex=dex-fn
+# Docker inspect
 alias di=di-fn
 alias dim="docker images"
+# IP Addresses of all running containers
 alias dip=dip-fn
 alias dl=dl-fn
 alias dnames=dnames-fn
@@ -127,8 +166,6 @@ alias drmid=drmid-fn
 alias drun=drun-fn
 alias dsp="docker system prune --all"
 alias dsr=dsr-fn
-alias dmurder='docker stop $(docker ps -aq) && docker rm -f $(docker ps -aq) && docker system prune -a'
 alias fm='frogmouth'
 
-alias xcd='cd "$(xplr --print-pwd-as-result)"'
 
