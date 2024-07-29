@@ -1,3 +1,9 @@
+#                 _
+#      ____ ___ | |__   _ __   ___
+#     |_  // __|| '_ \ | '__| / __|
+#      / / \__ \| | | || |   | (__
+#     /___||___/|_| |_||_|    \___|
+#      
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Environment
@@ -18,13 +24,12 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 source $ZSH/oh-my-zsh.sh
 
 # Source Aliases
-source ~/.zsh_aliases
+source $HOME/.zsh_aliases
 
 # Software Dev Language Initialization
-# NodeJS & Node Version Manager
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Python & Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -32,21 +37,19 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Go
-export PATH=$PATH:/Users/roger/.local/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/go/bin
 
 # Apps / Utilities
 source <(fzf --zsh)
-source /Users/roger/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br
 
 # Cloud Services
 # Amazon Web Services
 export AWS_PROFILE=""
 export AWS_REGION=""
 
-# Google Cloud CLI
-# if [ -f '/Users/roger/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/roger/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-# if [ -f '/Users/roger/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/roger/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Source Aliases + starship prompt
 eval "$(starship init zsh)"
+
+# =======================================================================================================
