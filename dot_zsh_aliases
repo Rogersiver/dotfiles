@@ -13,6 +13,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+alias ya="y"
+
 ############################ STANDARD ###############################
 alias h='history -10'
 alias hc='history -c'
@@ -50,7 +52,6 @@ alias gc='git commit'
 alias gd='git diff'
 alias gk='gitk --all&'
 alias gx='gitx --all'
-alias gbc='better-commits'
 alias ghist='git hist'
     
 ################ DEFAULT APP REPLACEMENTS ######################
