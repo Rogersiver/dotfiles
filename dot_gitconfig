@@ -16,8 +16,8 @@
   hunk-header-style = file line-number syntax
 
 [user]
-	email = rogersiver@gmail.com
-	name = Rogersiver
+	email = "email here"
+	name = "name here"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

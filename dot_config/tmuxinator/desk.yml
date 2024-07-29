@@ -1,27 +1,25 @@
-# /Users/roger/.config/tmuxinator/desk.yml
-
 name: desk
 root: ~/Documents/
 
-# Optional tmux socket
 # socket_name: foo
+
 # on_project_start: command
 # on_project_first_start: command
 # on_project_restart: command
 # on_project_exit: command
 # on_project_stop: command
 # pre_window: rbenv shell 2.0.0-p247
+
 # tmux_options: -f ~/.tmux.mac.conf
 # tmux_command: byobu
 # attach: true
 
 startup_window: daily
-startup_pane: 1
+# startup_pane: 1
 
 windows:
   - term:
       layout: main-vertical
-      synchronize: after
       panes:
         -
         -
