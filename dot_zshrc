@@ -19,7 +19,7 @@ COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy"
 plugins=(zsh-autosuggestions git zsh-z sudo copypath 
-	web-search copyfile copybuffer jsontools macos zsh-syntax-highlighting)
+	web-search copyfile copybuffer jsontools macos zsh-syntax-highlighting emoji)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=7"
 source $ZSH/oh-my-zsh.sh
 
