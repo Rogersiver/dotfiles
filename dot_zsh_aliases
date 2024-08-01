@@ -55,9 +55,9 @@ alias gx='gitx --all'
 alias ghist='git hist'
     
 ################ DEFAULT APP REPLACEMENTS ######################
-alias ls='exa'
+alias ls='eza'
 alias ll='ls -l'
-alias exa='exa --icons'
+alias eza='eza --icons'
 alias cat='bat'
 alias bat='bat -p -p'
 alias grep='rg -uu'
@@ -169,5 +169,4 @@ alias drun=drun-fn
 alias dsp="docker system prune --all"
 alias dsr=dsr-fn
 alias fm='frogmouth'
-
 
